@@ -1,0 +1,16 @@
+﻿@page "/sayhello2/{firstname?}"
+
+<h3>Hello @FirstName</h3>
+
+<p>Here the param in the URL is optional.If you don't set it, you'll still see this component and it will say "Hello stranger"</p>
+
+@code {
+  [Parameter]
+  public string FirstName { get; set; }
+
+
+  protected override void OnInitialized()
+  {
+    FirstName = FirstName ?? "stranger";
+  }
+}

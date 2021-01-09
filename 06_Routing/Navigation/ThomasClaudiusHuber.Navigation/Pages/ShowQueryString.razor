@@ -1,0 +1,29 @@
+﻿@page "/showquerystring"
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.WebUtilities 
+
+<h3>Show querystring</h3>
+
+<p>Querystring: @querystring</p>
+<p>firstname parameter: @firstname</p>
+<p>lastname parameter: @lastname</p>
+
+@code {
+  string querystring;
+  string firstname;
+  string lastname;
+  protected override void OnInitialized()
+  {
+    querystring = new Uri(NavigationManager.Uri).Query;
+
+    if (QueryHelpers.ParseQuery(querystring).TryGetValue("firstname", out var firstnameValue))
+    {
+      firstname = firstnameValue;
+    }
+
+    if (QueryHelpers.ParseQuery(querystring).TryGetValue("lastname", out var lastnameValue))
+    {
+      lastname = lastnameValue;
+    }
+  }
+}

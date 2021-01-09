@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<h1>Hello</h1>
+
+<p>Click the button to navigate to the counter component</p>
+
+<button class="btn btn-primary" @onclick="ButtonClick">
+  Navigate to counter
+</button>
+
+@code{
+  private void ButtonClick()
+  {
+    NavigationManager.NavigateTo("/counter");
+  }
+}
+
+

@@ -1,0 +1,12 @@
+﻿@page "/catchall/{*allparameters}"
+
+<h3>CatchAll</h3>
+
+<p><strong>Route parameters: @AllParameters</strong></p>
+
+<p>This component grabs all parameters after catchall in the URL. Try it out by changing the URL</p>
+
+@code {
+  [Parameter]
+  public string AllParameters { get; set; }
+}

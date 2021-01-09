@@ -1,0 +1,11 @@
+﻿@page "/sayhello/{firstname}"
+
+<h3>Hello @FirstName</h3>
+
+<p>Change the firstname "@FirstName" in the URL to something else and hit Enter. Try also what happens when you don't specify a firstname</p>
+
+@code {
+  [Parameter]
+  public string FirstName { get; set; }
+
+}

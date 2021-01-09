@@ -1,0 +1,26 @@
+﻿@page "/employees"
+@using ThomasClaudiusHuber.DependencyInjection.Services
+@inject IEmployeeService EmployeeService
+
+<h3>Employees</h3>
+
+<p>The service is injected directly into this component</p>
+
+@if (employees != null)
+{
+  <ul>
+    @foreach (var employee in employees)
+    {
+      <li>@employee.FirstName @employee.LastName</li>
+    }
+  </ul>
+}
+
+@code {
+  private IEnumerable<Employee> employees;
+
+  protected override async Task OnInitializedAsync()
+  {
+    employees = await EmployeeService.LoadEmployeesAsync();
+  }
+}

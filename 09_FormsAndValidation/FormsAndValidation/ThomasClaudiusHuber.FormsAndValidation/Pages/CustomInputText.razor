@@ -1,0 +1,6 @@
+﻿@inherits InputText
+
+@*This one sets the oninpput event as update event, which means the input changes the data source when the user types something, and not only after losing focus*@
+
+<input @attributes="AdditionalAttributes" class="@CssClass"
+       @bind="CurrentValueAsString" @bind:event="oninput" />

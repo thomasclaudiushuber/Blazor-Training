@@ -1,0 +1,28 @@
+﻿@layout MainLayout
+@inherits LayoutComponentBase
+
+<div>
+  <ul class="nav flex-column">
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company">
+        <span class="oi oi-flash" aria-hidden="true"></span> Company overview
+      </NavLink>
+    </li>
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company/employees">
+        <span class="oi oi-person" aria-hidden="true"></span> Employees
+      </NavLink>
+    </li>
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company/organizations">
+        <span class="oi oi-grid-three-up" aria-hidden="true"></span> Organisations
+      </NavLink>
+    </li>
+  </ul>
+
+  <div>
+    <div class="content px-4">
+      @Body
+    </div>
+  </div>
+</div>
