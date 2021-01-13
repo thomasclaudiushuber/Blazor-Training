@@ -1,0 +1,16 @@
+﻿@page "/employees2"
+@inherits Employees2Base
+
+<h3>Employees2</h3>
+
+<p>Here the service is injected in the Employees2Base class</p>
+
+@if (employees != null)
+{
+  <ul>
+    @foreach (var employee in employees)
+    {
+      <li>@employee.FirstName @employee.LastName</li>
+    }
+  </ul>
+}

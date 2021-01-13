@@ -1,0 +1,12 @@
+﻿@page "/employee"
+
+<h3>Employee with ID @EmployeeId</h3>
+
+<p>Here the id parameter in the URL must be of type integer, else the router doesn't match the route to this component</p>
+
+@code {
+  // TODO: 4. Change the route to take an employeeId parameter of type int
+  // TODO: 5. Make this EmployeeId property a parameter property, so that the route parameter can be stored in it
+
+  public int EmployeeId { get; set; }
+}

@@ -1,0 +1,30 @@
+﻿@page "/databinding/bindinputfields"
+
+<h3>Bind input fields</h3>
+
+<p>
+  <label>Firstname</label>
+  <input @bind="FirstName" />
+</p>
+<p>
+  <label>Firstname (update on input)</label>
+  @{
+    // TODO: 2. Use on the <input> field below the @bind:event directive to specify the oninput event as an update trigger
+  }
+  <input @bind="FirstName"/>
+</p>
+<p>
+  <label>Lastname</label>
+  <input @bind="LastName" />
+</p>
+
+
+
+<div>
+  Fullname: @FirstName @LastName
+</div>
+
+@code{
+  string FirstName { get; set; }
+  string LastName { get; set; }
+}

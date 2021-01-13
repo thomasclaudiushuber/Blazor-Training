@@ -1,0 +1,83 @@
+﻿@page "/githubrepos2"
+@inject HttpClient Http
+
+<h1>GitHub Repos</h1>
+
+<p>Enter github username and hit enter</p>
+<p>If the username does not exist, this component shows it, as it handles the 404 HTTP status code</p>
+
+<div>
+  <label>GitHub user name:</label>
+  <input class="form-control" @bind="@githubUsername" @onkeyup="OnUsernameKeyUpAsync" />
+</div>
+
+@if (isLoading)
+{
+  <p>Loading...</p>
+}
+else if (userNotFound)
+{
+  <p>User @githubUsername not found on GitHub</p>
+}
+else
+{
+  @if (repos != null)
+  {
+    <ul>
+      @foreach (var repo in repos)
+      {
+        <li>
+          <div>@repo.Name</div>
+          <p>@repo.Description</p>
+        </li>
+      }
+    </ul>
+  }
+  else
+  {
+    <p>No repos found</p>
+  }
+}
+
+
+@code {
+  private string githubUsername = "thomasclaudiushuber";
+  private GitHubRepo[] repos;
+  bool isLoading;
+  bool userNotFound;
+
+  protected override async Task OnInitializedAsync()
+  {
+    await LoadDataAsync();
+  }
+
+  private async Task LoadDataAsync()
+  {
+    isLoading = true;
+    var httpResponseMessage = await Http.GetAsync($"https://api.github.com/users/{githubUsername}/repos");
+
+    // TODO: 7. Set here the userNotFound variable only to true if the status code of the HttpResponseMessage is 404
+    userNotFound = false;
+
+    if (httpResponseMessage.IsSuccessStatusCode)
+    {
+      repos = await httpResponseMessage.Content.ReadFromJsonAsync<GitHubRepo[]>();
+    }
+
+    isLoading = false;
+  }
+
+  private async Task OnUsernameKeyUpAsync(KeyboardEventArgs e)
+  {
+    if (e.Key == "Enter")
+    {
+      await LoadDataAsync();
+    }
+  }
+
+  public class GitHubRepo
+  {
+    public string Name { get; set; }
+    public string Description { get; set; }
+  }
+}

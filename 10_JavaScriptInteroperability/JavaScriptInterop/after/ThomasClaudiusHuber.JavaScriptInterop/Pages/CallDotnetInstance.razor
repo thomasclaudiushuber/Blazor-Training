@@ -1,0 +1,28 @@
+﻿@page "/calldotnetinstance"
+@inject IJSRuntime JSRuntime
+
+<h3>Call .NET instance method from JS</h3>
+
+<p>Window size received from JavaScript (Resize the Window to see it in action): </p>
+<p>@windowSize.Width x @windowSize.Height</p>
+
+@code {
+  System.Drawing.Size windowSize;
+  protected async override Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      var dotNetObjectReference = DotNetObjectReference.Create(this);
+      await JSRuntime.InvokeVoidAsync("blazorJsInterop.registerSizeChangedHandler", dotNetObjectReference);
+    }
+  }
+
+  [JSInvokable]
+  public void SetWindowSize(System.Drawing.Size size)
+  {
+    this.windowSize = size;
+
+    // Call StateHasChanged, as Blazor does not know that it has to refresh the component after it was called from JavaScript
+    StateHasChanged();
+  }
+}

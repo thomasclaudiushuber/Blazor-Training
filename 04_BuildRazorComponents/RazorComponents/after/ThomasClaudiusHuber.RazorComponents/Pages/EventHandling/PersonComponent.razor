@@ -1,0 +1,21 @@
+﻿
+<div>
+  <label>@FirstName</label>
+  <button class="btn btn-primary" @onclick="DeleteAsync">Delete</button>
+</div>
+
+@code {
+  [Parameter]
+  public string FirstName { get; set; }
+
+  [Parameter]
+  public EventCallback<string> DeleteEvent { get; set; }
+
+  private async Task DeleteAsync()
+  {
+    if (DeleteEvent.HasDelegate)
+    {
+      await DeleteEvent.InvokeAsync(FirstName);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+﻿@page "/loops"
+
+<h3>Loops</h3>
+
+<ul>
+  @foreach (var friend in friends)
+  {
+    <li>@friend.FirstName @friend.LastName</li>
+  }
+</ul>
+
+@code {
+
+  private List<Friend> friends = new List<Friend>
+{
+    new Friend{FirstName="Anna",LastName="Rockstar" },
+    new Friend{FirstName="Sara",LastName="Sahara"},
+    new Friend{FirstName="Thomas",LastName="Huber"}
+  };
+
+  public class Friend
+  {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+  }
+}

@@ -1,0 +1,23 @@
+﻿@page "/eventhandling/deleteevent"
+
+<h3>PersonOverview</h3>
+
+<ul>
+  @foreach (var name in names)
+  {
+    // TODO: 5. On the PersonComponent below, use the DeleteEvent that you have created and assign this component's OnDelete method to it.
+    //          Then run the app and you should be able to delete a person from this component
+    <li>
+      <PersonComponent FirstName="@name"/>
+    </li>
+  }
+</ul>
+
+@code { 
+  List<string> names = new List<string>{ "Thomas", "Anna", "Julia", "Tim", "Tom" };
+
+  private void OnDelete(string deletedName)
+  {
+    names.Remove(deletedName);
+  }
+}

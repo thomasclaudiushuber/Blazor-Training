@@ -1,0 +1,77 @@
+﻿@page "/employee1"
+
+<h3>Employee1</h3>
+
+@if (employee != null)
+{
+  <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit">
+    @{
+      // TODO: 1. Note that the EditForm's Model property is set to the employee field on the component
+
+      // TODO: 2. Create here a DataAnnotationsValidator
+    }
+
+    <p>
+      <label for="firstname">Firstname (required, max 20 characters): </label>
+      @{
+        // TODO: 3. Create here an InputText component and bind it to the employee.FirstName property
+
+        // TODO: 4. Display a validation message for the employee.FirstName property
+      }
+    </p>
+
+    <p>
+      <label for="email">Email (optional): </label>
+      <InputText id="email" class="form-control" @bind-Value="employee.Email" />
+      <ValidationMessage For="() => employee.Email" />
+    </p>
+
+    <p>
+      <label for="jobRole">Job Role (required): </label>
+      <InputSelect id="jobRole" class="form-control" @bind-Value="employee.JobRole">
+        <option value="">Select a Job role</option>
+        <option value="dev">Software Developer</option>
+        <option value="admin">Administrator</option>
+        <option value="mcspecialist">Marketing specialist</option>
+      </InputSelect>
+      <ValidationMessage For="() => employee.JobRole" />
+    </p>
+
+    <p>
+      <label for="jobentrydate">Job Entry Date (required): </label>
+      <InputDate id="jobentrydate" class="form-control" @bind-Value="employee.JobEntryDate" />
+      <ValidationMessage For="() => employee.JobEntryDate" />
+    </p>
+
+    <p>
+      <label for="blazorskilllevel">Blazor skill level (required, between 0 and 10): </label>
+      <InputNumber id="blazorskilllevel" class="form-control" @bind-Value="employee.BlazorSkillLevel" />
+      <ValidationMessage For="() => employee.BlazorSkillLevel" />
+    </p>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+    @{
+      // TODO: 5. Display here a validation summary
+    }
+  </EditForm>
+}
+
+@code {
+  private Employee employee;
+
+  protected override Task OnInitializedAsync()
+  {
+    // Here you could load the employee via Http Service
+    employee = new Employee { JobEntryDate = DateTime.Now.Date };
+
+    return Task.CompletedTask;
+  }
+
+
+  private void HandleValidSubmit()
+  {
+    // Here you could save the employee via Http Service
+    Console.WriteLine($"Save employee {employee.FirstName}");
+  }
+}

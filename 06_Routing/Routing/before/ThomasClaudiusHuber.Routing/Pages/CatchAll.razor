@@ -1,0 +1,19 @@
+﻿@page "/catchall"
+
+
+<h3>CatchAll</h3>
+
+<p><strong>Route parameters: @AllParameters</strong></p>
+
+<p>This component grabs all parameters after catchall in the URL. Try it out by changing the URL</p>
+
+@code {
+
+  // TODO: 6. Catch all route parameters and store the string in the AllParameters property
+
+  // TODO: 7. Bonus point: While running the application, append a query string to the URL.
+  //          Does the AllParameters property contain the querystring or not? 
+
+  [Parameter]
+  public string AllParameters { get; set; }
+}

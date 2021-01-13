@@ -1,0 +1,44 @@
+﻿@page "/expressions"
+
+<h3>Expressions</h3>
+
+<p>
+  <label>Change here the fullname</label>
+  <input @bind="fullName" @bind:event="oninput" class="form-control" />
+</p>
+
+<!-- Implicit expressions -->
+
+@{
+  // TODO: 1. Render the fullName field below
+}
+<p>Fullname: </p>
+
+
+@{
+  // TODO: 2. Render the length of the fullName
+}
+<p>Fullname length: </p>
+
+
+@{ 
+  // TODO: 3. Render the firstName by using Split(' ') method on the fullName string and grabbing the string at index 0
+}
+<p>Firstname: </p>
+
+
+@{ 
+  // TODO: 4. Run the application and look at the output of the implicit expression below
+}
+<p>Has more than two names: @fullName.Split(' ').Length > 2</p>
+
+<!-- Explicit expression -->
+
+@{ 
+  // TODO: 5. Create an explicit expression below, so that the output is true when the fullName field has more than 2 names
+}
+<p>Has more than two names: @fullName.Split(' ').Length > 2</p>
+
+@code {
+  private string fullName = "Thomas Claudius Huber";
+}

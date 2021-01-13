@@ -1,0 +1,89 @@
+﻿@page "/githubrepos"
+@inject HttpClient Http
+
+<h1>GitHub Repos</h1>
+
+<p>Enter github username and hit enter</p>
+<p>If the username does not exist, this component runs into an exception - see browser console</p>
+
+<div>
+  <label>GitHub user name:</label>
+  <input class="form-control" @bind="@githubUsername" @onkeyup="OnUsernameKeyUpAsync" />
+</div>
+
+@if (isLoading)
+{
+  <p>Loading...</p>
+}
+else
+{
+  @if (repos != null)
+  {
+    <ul>
+      @foreach (var repo in repos)
+      {
+        <li>
+          <div>
+            @{
+              // TODO: 5. Render here the repo name
+            }
+          </div>
+          <p>
+            @{
+              // TODO: 6. Render here the repo description
+            }
+          </p>
+        </li>
+      }
+    </ul>
+  }
+  else
+  {
+    <p>No repos found</p>
+  }
+}
+
+
+@code {
+  private string githubUsername = "thomasclaudiushuber";
+  private GitHubRepo[] repos;
+  bool isLoading;
+
+  protected override async Task OnInitializedAsync()
+  {
+    await LoadDataAsync();
+  }
+
+  private async Task LoadDataAsync()
+  {
+    isLoading = true;
+
+    // TODO: 3. Inject the HttpClient into this component with the @inject directive
+
+    // TODO: 4. Use the HttpClient here and call its GetFromJsonAsync method to get an GitHubRepo[] array
+    //          - assign the array to the repos field of this class
+    //          - Pass this URL string to the GetFromJsonAsync method: $"https://api.github.com/users/{githubUsername}/repos"
+
+
+    isLoading = false;
+  }
+
+  private async Task OnUsernameKeyUpAsync(KeyboardEventArgs e)
+  {
+    if (e.Key == "Enter")
+    {
+      await LoadDataAsync();
+    }
+  }
+
+  // TODO: 1. a) Open your browser with this URL: https://api.github.com/users/thomasclaudiushuber/repos
+  //          (If you have a GitHub username, replace thomasclaudiushuber with your username
+  //          b) Look at the JSON result. It's an array of GitHub repositories. Search for "name" and "description"
+  //             to see that every array entry has these properties
+
+  public class GitHubRepo
+  {
+    // TODO: 2. Add the public string properties Name and Description to this GitHubRepo class
+  }
+
+}

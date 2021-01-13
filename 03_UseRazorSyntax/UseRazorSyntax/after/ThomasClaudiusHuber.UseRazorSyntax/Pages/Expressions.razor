@@ -1,0 +1,24 @@
+﻿@page "/expressions"
+
+<h3>Expressions</h3>
+
+<p>
+  <label>Change here the fullname</label>
+  <input @bind="fullName" @bind:event="oninput" class="form-control" />
+</p>
+
+<!-- Implicit expressions -->
+<p>Fullname: @fullName</p>
+
+<p>Fullname length: @fullName.Length</p>
+
+<p>Firstname: @fullName.Split(' ')[0]</p>
+
+<p>Has more than two names: @fullName.Split(' ').Length > 2</p>
+
+<!-- Explicit expression -->
+<p>Has more than two names: @(fullName.Split(' ').Length > 2)</p>
+
+@code {
+  private string fullName = "Thomas Claudius Huber";
+}

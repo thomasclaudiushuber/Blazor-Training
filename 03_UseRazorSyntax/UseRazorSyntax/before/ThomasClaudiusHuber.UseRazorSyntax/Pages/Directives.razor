@@ -1,0 +1,26 @@
+﻿@page "/directives"
+
+<h3>Directives</h3>
+
+@{
+  // TODO: 12. Use the @onclick directive on the button below to hook up the button's click event with the components ToggleUI method
+}
+
+<button class="btn btn-primary">Toggle UI</button>
+
+@{ 
+  // TODO: 13. Create an @if block around the following <p> tag and only show the <p> tag when the isCollapsed field is not true
+}
+<p>
+  This is the toggled UI. It's shown and hidden when you click the button
+</p>
+
+
+@code {
+  private bool isCollapsed = false;
+
+  private void ToggleUI()
+  {
+    isCollapsed = !isCollapsed;
+  }
+}

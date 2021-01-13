@@ -1,0 +1,28 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+<div>
+  <label>Increase by: </label>
+  @{ 
+    // TODO: 3. Create here an <input> element and use the @bind attribute to bind it to the increaseBy field of the component
+    //          Run the app and see it in action
+  }
+
+</div>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+  // TODO: 1. Add here an increaseBy field of type int and set it to 5;
+
+  private int currentCount = 0;
+
+  private void IncrementCount()
+  {
+    // TODO: 2. Instead of increasing the currentCount field by 1, increase it by the new increaseBy field
+    currentCount++;
+  }
+
+}

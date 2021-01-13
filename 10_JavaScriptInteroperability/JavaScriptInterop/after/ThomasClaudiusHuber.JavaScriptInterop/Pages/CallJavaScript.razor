@@ -1,0 +1,53 @@
+﻿@page "/calljavascript"
+@inject IJSRuntime JSRuntime
+
+<h1>Call JavaScript</h1>
+
+<div>
+  <button class="btn btn-primary" @onclick="ShowMessageAsync">Show message</button>
+</div>
+
+<div>
+  <button class="btn btn-primary" @onclick="ShowPromptAsync">Show prompt</button>
+  <p>Prompt result: @promptResult</p>
+</div>
+
+
+<div>
+  <button class="btn btn-primary" @onclick="PassObjectToJavaScriptAsync">Pass object to JavaScript</button>
+  <p>Look into the browsers console for the output</p>
+</div>
+@code {
+  private async Task ShowMessageAsync()
+  {
+    await JSRuntime.InvokeVoidAsync("blazorJsInterop.showMessage", "Greetings from Thomas");
+  }
+
+  private string promptResult;
+  private async Task ShowPromptAsync()
+  {
+    var defaultValue = promptResult ?? "";
+    var result = await JSRuntime.InvokeAsync<string>("blazorJsInterop.showPrompt", "What's your name?", defaultValue);
+    if (result is not null) // OK was clicked
+    {
+      promptResult = result;
+    }
+  }
+
+  private async Task PassObjectToJavaScriptAsync()
+  {
+    var employee = new Employee
+    {
+      FirstName = "Thomas",
+      JobEntryDate = new DateTime(2021, 7, 10)
+    };
+
+    await JSRuntime.InvokeVoidAsync("blazorJsInterop.passObject", employee);
+  }
+
+  class Employee
+  {
+    public string FirstName { get; set; }
+    public DateTime JobEntryDate { get; set; }
+  }
+}

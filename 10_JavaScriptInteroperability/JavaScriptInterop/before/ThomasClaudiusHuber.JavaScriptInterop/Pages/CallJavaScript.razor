@@ -1,0 +1,70 @@
+﻿@page "/calljavascript"
+@inject IJSRuntime JSRuntime
+
+<h1>Call JavaScript</h1>
+
+<div>
+  <button class="btn btn-primary" @onclick="ShowMessageAsync">Show message</button>
+</div>
+
+<div>
+  <button class="btn btn-primary" @onclick="ShowPromptAsync">Show prompt</button>
+  <p>Prompt result: @promptResult</p>
+</div>
+
+
+<div>
+  <button class="btn btn-primary" @onclick="PassObjectToJavaScriptAsync">Pass object to JavaScript</button>
+  <p>Look into the browsers console for the output</p>
+</div>
+@code {
+  private async Task ShowMessageAsync()
+  {
+    // TODO: 1. Look into the wwwroot/scripts folder of this project and open the callJavaScript.js file.
+    //          Note that it has blazorJsInterop object with different methods
+
+    // TODO: 2. Inject the IJSRuntime into this component with the @inject directive
+
+    // TODO: 3. Use the IJSRuntime here, call its InvokeVoidAsync method to invoke the JavaScript method blazorJsInterop.showMessage.
+    //          Pass as a parameter to that JavaScript method your name
+
+    // TODO: 4. Note that this method is called from the "Show message" button defined in Razor. 
+    //          Run the app and click the button. You get an error. Look into the browser's console to find out about the error
+
+    // TODO: 5. Include a <script>-tag for the callJavaScript.js file in the index.html file and
+    //          run the app again, click the "Show message" button again, this time it should work.
+  }
+
+  private string promptResult;
+  private async Task ShowPromptAsync()
+  {
+    var defaultValue = promptResult ?? "";
+
+    // TODO: 6. Use here the IJSRuntime's InvokeAsync method to invoke the blazorJsInterop.showPrompt method. 
+    //          - Store the string return value in the result variable 
+    //          - Pass as first parameter the string "What's your name?", and as second parameter the defaultValue variable
+
+    var result = "";
+    if (result is not null) // OK was clicked
+    {
+      promptResult = result;
+    }
+  }
+
+  private async Task PassObjectToJavaScriptAsync()
+  {
+    var employee = new Employee
+    {
+      FirstName = "Thomas",
+      JobEntryDate = new DateTime(2021, 7, 10)
+    };
+
+    await JSRuntime.InvokeVoidAsync("blazorJsInterop.passObject", employee);
+  }
+
+  class Employee
+  {
+    public string FirstName { get; set; }
+    public DateTime JobEntryDate { get; set; }
+  }
+}

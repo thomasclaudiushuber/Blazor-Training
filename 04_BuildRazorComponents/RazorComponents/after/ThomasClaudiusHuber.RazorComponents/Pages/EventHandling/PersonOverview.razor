@@ -1,0 +1,21 @@
+﻿@page "/eventhandling/deleteevent"
+
+<h3>PersonOverview</h3>
+
+<ul>
+  @foreach (var name in names)
+  {
+    <li>
+      <PersonComponent FirstName="@name" DeleteEvent="OnDelete"/>
+    </li>
+  }
+</ul>
+
+@code { 
+  List<string> names = new List<string>{ "Thomas", "Anna", "Julia", "Tim", "Tom" };
+
+  private void OnDelete(string deletedName)
+  {
+    names.Remove(deletedName);
+  }
+}

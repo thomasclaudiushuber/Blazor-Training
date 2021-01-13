@@ -1,0 +1,41 @@
+﻿@{
+  // TODO: 1. Inherit this component from LayoutComponentBase by using the @inherits directive
+  // TODO: 2. Specify the MainLayout as a base layout with the @layout directive
+
+
+  // After you're done with the TODO's, remove this codeblock
+}
+
+<div>
+  <ul class="nav flex-column">
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company">
+        <span class="oi oi-flash" aria-hidden="true"></span> Company overview
+      </NavLink>
+    </li>
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company/employees">
+        <span class="oi oi-person" aria-hidden="true"></span> Employees
+      </NavLink>
+    </li>
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="company/organizations">
+        <span class="oi oi-grid-three-up" aria-hidden="true"></span> Organisations
+      </NavLink>
+    </li>
+  </ul>
+
+  <div>
+    <div class="content px-4">
+      @{
+        // TODO: 3. Place here the @Body property that is inherited from LayoutComponentBase
+
+        // After you're done with the TODO, remove this codeblock
+      }
+    </div>
+  </div>
+</div>
+
+@{
+  // TODO: 4. Add an _Import.razor file to the Company folder and specify there this CompanyLayout as a layout for the Components in the Company folder
+}

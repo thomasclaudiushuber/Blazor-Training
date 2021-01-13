@@ -1,0 +1,15 @@
+﻿@page "/calldotnetstatic"
+
+<h3>Call Static .NET method from JS</h3>
+
+<!-- Note that here the onclick event of the button is used, and not Blazor's @onclick. This means JavaScript is invoked directly with this button -->
+<button onclick="blazorJsInterop.callStaticDotnetMethod()">Call static .NET method from JavaScript</button>
+
+@code {
+
+  [JSInvokable]
+  public static string GetGuidString()
+  {
+    return Guid.NewGuid().ToString();
+  }
+}

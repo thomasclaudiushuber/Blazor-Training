@@ -1,0 +1,28 @@
+﻿@page "/showquerystring"
+@{
+  // TODO: 1. Inject the NavigationManager into this component by using the @inject directive
+}
+
+@inject NavigationManager NavigationManager
+
+<h3>Show querystring</h3>
+
+<p>Querystring: @querystring</p>
+<p>firstname parameter: @firstname</p>
+<p>lastname parameter: @lastname</p>
+
+@code {
+  string querystring;
+  string firstname;
+  string lastname;
+  protected override void OnInitialized()
+  {
+    // TODO: 2. Grab here the query string by using the NavigationManager and the Uri class
+    querystring = "";
+
+    // TODO: 3. Read the firstname and the lastname from the query string
+    //       3. a) Add a reference to the NuGet package Microsoft.AspNetCore.WebUtilities to the project
+    //       3. b) Add a @using directive in this component for the Microsoft.AspNetCore.WebUtilities namespace
+    //       3. c) Use the QueryHelpers class and its ParseQuery method to parse the query string and grab the parameters firstname and lastname
+  }
+}

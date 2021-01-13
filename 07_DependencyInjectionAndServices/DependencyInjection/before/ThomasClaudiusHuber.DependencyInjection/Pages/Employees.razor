@@ -1,0 +1,27 @@
+﻿@page "/employees"
+@using ThomasClaudiusHuber.DependencyInjection.Services
+
+
+<h3>Employees</h3>
+
+<p>The service is injected directly into this component</p>
+
+@if (employees != null)
+{
+  <ul>
+    @{ 
+      // TODO: 4. Create a <li> item for every employee in razor - use a foreach loop to do that
+    }
+  </ul>
+      }
+
+@code {
+  private IEnumerable<Employee> employees;
+
+  protected override async Task OnInitializedAsync()
+  {
+    // TODO: 2. Inject the IEmployeeService into this component by using the @inject directive at the top
+
+    // TODO: 3. Use the IEmployeeService here in this method to load the employees into the employees field    
+  }
+}

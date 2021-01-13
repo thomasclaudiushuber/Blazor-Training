@@ -1,0 +1,19 @@
+﻿
+<div>
+  <label>@FirstName</label>
+  <button class="btn btn-primary" @onclick="DeleteAsync">Delete</button>
+</div>
+
+@code {
+  [Parameter]
+  public string FirstName { get; set; }
+
+  // TODO: 3. Create here a property of type EventCallback and call it DeleteEvent
+  //          Don't forget to set the Parameter attribute on that event property
+
+  private async Task DeleteAsync()
+  {
+    // TODO: 4. If the DeleteEvent's HasDelegate property is true, raise the event here by calling it's InvokeAsync method.
+    //          As an argument, pass in the FirstName property
+  }
+}

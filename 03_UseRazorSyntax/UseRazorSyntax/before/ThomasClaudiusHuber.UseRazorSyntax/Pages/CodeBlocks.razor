@@ -1,0 +1,35 @@
+﻿@page "/codeblocks"
+
+<h3>CodeBlocks</h3>
+
+@{
+  void RenderFullname(string fullname)
+  {
+    // TODO: 6. Create here a <p> tag to render the fullname
+  }
+
+  RenderFullname("Thomas Huber");
+
+  RenderFullname("Anna Rockstar");
+
+  RenderFullname("Sara Sahara");
+}
+
+@{ 
+  var quote = "Never touch a running system";
+}
+
+<p>@quote</p>
+
+@{ 
+// TODO: 7. Use this code block here to change the quote variable to the string "If it ain't broken, don't fix it" 
+//          Note that the <p> tag at the bottom will then render the latest value, as the code flows from top down
+}
+
+<p>@quote</p>
+
+
+@{ 
+  // TODO: 8. Take a look at the generated razor.g.cs file in the obj\Debug folder for this CodeBlocks.razor component
+  //          to understand what Blazor does with the code blocks
+}

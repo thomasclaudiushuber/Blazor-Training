@@ -1,0 +1,21 @@
+﻿@page "/directives"
+
+<h3>Directives</h3>
+
+<button @onclick="ToggleUI" class="btn btn-primary">Toggle UI</button>
+
+@if (!isCollapsed)
+{
+  <p>
+    This is the toggled UI. It's shown and hidden when you click the button
+  </p>
+}
+
+@code {
+  private bool isCollapsed = false;
+
+  private void ToggleUI()
+  {
+    isCollapsed = !isCollapsed;
+  }
+}

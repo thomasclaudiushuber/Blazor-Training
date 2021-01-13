@@ -1,0 +1,28 @@
+﻿@page "/loops"
+
+<h3>Loops</h3>
+
+<ul>
+  @{ 
+    // TODO: 11. Create a foreach loop here in razor syntax to loop through the friends.
+    //           For each friend create a <li> tag that contains the friend's firstname and lastname
+
+    // Note: As usual, you can remove this code block here with this comment
+  }
+</ul>
+
+@code {
+
+  private List<Friend> friends = new List<Friend>
+{
+    new Friend{FirstName="Anna",LastName="Rockstar" },
+    new Friend{FirstName="Sara",LastName="Sahara"},
+    new Friend{FirstName="Thomas",LastName="Huber"}
+  };
+
+  public class Friend
+  {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+  }
+}

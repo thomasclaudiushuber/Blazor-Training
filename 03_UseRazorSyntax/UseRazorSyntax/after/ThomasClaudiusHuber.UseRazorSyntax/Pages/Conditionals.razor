@@ -1,0 +1,26 @@
+﻿@page "/conditionals"
+
+<h3>Conditionals</h3>
+
+<p>
+  <label>Enter here a firstname (Try "Thomas" or "Anna")</label>
+  <input @bind="firstName" @bind:event="oninput" class="form-control"/>
+</p>
+
+@if (firstName == "Thomas")
+{
+  <p>Hi, I'm Thomas, who are you?</p>
+}
+else if(firstName == "Anna")
+{
+  <p>You're a rockstar</p>
+}
+else
+{
+  <p>I don't know anything about that firstname</p>
+}
+
+
+@code {
+  private string firstName;
+}

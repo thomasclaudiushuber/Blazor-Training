@@ -1,0 +1,18 @@
+﻿<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">@CardTitle</h5>
+    <p class="card-text">@CardText</p>
+    @CardBodyContent
+  </div>
+</div>
+@code{
+
+  [Parameter]
+  public RenderFragment CardTitle { get; set; }
+  
+  [Parameter]
+  public RenderFragment CardText { get; set; }
+
+  [Parameter]
+  public RenderFragment CardBodyContent{ get; set; }
+}

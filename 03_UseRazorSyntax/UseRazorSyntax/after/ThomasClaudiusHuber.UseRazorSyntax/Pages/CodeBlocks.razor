@@ -1,0 +1,28 @@
+﻿@page "/codeblocks"
+
+<h3>CodeBlocks</h3>
+
+@{
+  void RenderFullname(string fullname)
+  {
+    <p>Fullname: <strong>@fullname</strong></p>
+  }
+
+  RenderFullname("Thomas Huber");
+
+  RenderFullname("Anna Rockstar");
+
+  RenderFullname("Sara Sahara");
+}
+
+@{ 
+  var quote = "Never touch a running system";
+}
+
+<p>@quote</p>
+
+@{ 
+  quote = "If it ain't broken, don't fix it";
+}
+
+<p>@quote</p>

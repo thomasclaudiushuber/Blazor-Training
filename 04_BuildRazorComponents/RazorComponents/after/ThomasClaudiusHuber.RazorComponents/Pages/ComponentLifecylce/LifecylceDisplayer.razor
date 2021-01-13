@@ -1,0 +1,41 @@
+﻿@page "/componentlifecycle/lifecycledisplayer"
+
+
+<h3>LifecylceDisplayer</h3>
+
+<p>Lifecylce events: </p>
+<div>
+  <label>Enter something here to cause a render</label>
+  <input class="form-control" @bind="textToCauseRender" @bind:event="oninput" />
+</div>
+<p>
+  <span>Entered input: @textToCauseRender</span>
+</p>
+
+<ul>
+  @foreach (var raisedEvent in raisedEvents)
+  {
+    <li>@raisedEvent</li>
+  }
+</ul>
+
+@code {
+  private string textToCauseRender;
+
+  private List<string> raisedEvents = new List<string>();
+
+  protected override void OnInitialized()
+  {
+    raisedEvents.Add("OnInitialized");
+  }
+
+  protected override void OnAfterRender(bool firstRender)
+  {
+    raisedEvents.Add($"OnAfterRender (firstRender: {firstRender})");
+  }
+
+  protected override void OnParametersSet()
+  {
+    raisedEvents.Add("OnParametersSet");
+  }
+}
